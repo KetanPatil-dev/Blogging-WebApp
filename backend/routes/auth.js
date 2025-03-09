@@ -1,6 +1,6 @@
 import express from "express"
-import { Login, Logout, Register } from "../controllers/auth.js";
-import upload  from "../Multer.js"
+import { Login, Register,Logout } from "../controllers/auth.js";
+import upload  from "../middleware/Multer.js"
 const AuthRoute=express.Router()
 
 AuthRoute.post("/register", upload.single("profile"), Register)
