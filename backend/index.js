@@ -4,6 +4,7 @@ import connectDB from "./connect.js";
 import AuthRoute from "./routes/auth.js"
 import cookieparser from "cookie-parser"
 import BlogsRoutes from "./routes/Blog.js";
+import DashBoardRoute from "./routes/DashBoard.js";
 dotenv.config();
 const app = express();
 
@@ -23,6 +24,7 @@ const startFunc = () => {
     app.listen(PORT, () => console.log(`Server Started on PORT:${PORT}`));
      app.use("/auth",AuthRoute)
      app.use("/blog",BlogsRoutes)
+     app.use("/dashboard",DashBoardRoute)
   } catch (error) {
     console.log("ERROR", error);
   }
