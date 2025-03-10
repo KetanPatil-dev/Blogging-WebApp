@@ -18,3 +18,18 @@ const imagePath=req.file.filename
     }
 
 }
+
+export const DeletePost=async(req,res)=>{
+try {
+    const id=req.params.id;
+   
+    const FindPost=await PostModel.findById(id);
+    if(!FindPost){
+        return res.status(404).json({sucsess:false,message:"Post not found"})
+    }
+    const Delete_post=await PostModel.findByIdAndDelete(id)
+    return res.status(201).json({success:true,message:"Post Deleted Successfully",post:Delete_post})
+} catch (error) {
+    return res.status(500).json({success:false,message:"Internal Server Error"})
+}
+}

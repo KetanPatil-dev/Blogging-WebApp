@@ -12,7 +12,7 @@ app.use(cookieparser())
 app.use(express.json())
 app.use(urlencoded({extended:false}))
 
-const PORT = process.env.PORT || 6989;
+const PORT = process.env.PORT || 7989;
 app.get("/", (req, res) => {
   console.log("Hello");
 });
