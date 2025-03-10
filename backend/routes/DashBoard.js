@@ -6,5 +6,5 @@ const DashBoardRoute=express.Router()
 
 DashBoardRoute.get("/",isAdmin,GetAllData)
 DashBoardRoute.get("/users",isAdmin,GetUser)
-DashBoardRoute.delete("/delete/:id",isAdmin,DeleteUser)
+DashBoardRoute.delete("/delete/:id",DeleteUser)
 export default DashBoardRoute

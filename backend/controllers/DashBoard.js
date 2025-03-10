@@ -45,12 +45,14 @@ export const DeleteUser = async (req, res) => {
         .status(400)
         .json({ success: false, message: "Admin cant delete User Account" });
     }
-    if (findUser.image) {
-      const profilepath = path.join("public/images", findUser.image);
-      fs.promises
+    
+    if (findUser.profile) {
+      const profilepath = path.join("public/images", findUser.profile);
+      console.log(profilepath)
+      await fs.promises
         .unlink(profilepath)
-        .then(() => console.log("UserImage Deleted"))
-        .catch((error) => console.log("ERROR", error));
+        console.log("User Image Deleted")
+        
     }
     const deleteUser = await UserModel.findByIdAndDelete(id);
     return res
