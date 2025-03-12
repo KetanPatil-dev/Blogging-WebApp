@@ -26,3 +26,16 @@ html body{
 
 
 }
+.hero-section{
+  position: relative;
+  padding: 140px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("https://wallpapercave.com/wp/wp10908113.jpg");
+  background-size: cover;
+  background-position: center;
+  color: whitesmoke;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+}
