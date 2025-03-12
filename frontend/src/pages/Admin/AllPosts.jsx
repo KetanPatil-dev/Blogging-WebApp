@@ -2,7 +2,7 @@ import React from 'react'
 
 const AllPosts = () => {
   return (
-    <div>AllPosts</div>
+    <div className='fs-2 text-white'>All Posts</div>
   )
 }
 
