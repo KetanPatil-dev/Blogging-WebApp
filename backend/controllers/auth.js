@@ -58,6 +58,6 @@ export const Logout=async(req,res)=>{
        res.clearCookie("token") 
       return res.status(200).json({success:true,message:"Logout Successful."})
     } catch (error) {
-        return res.status(300).json({status:false,message:"Server Error"})
+        return res.status(500).json({status:false,message:"Internal Server Error"})
     }
 }
