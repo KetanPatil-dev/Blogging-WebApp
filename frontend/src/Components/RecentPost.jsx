@@ -6,11 +6,11 @@ import axios from "axios";
 
 const RecentPost = () => {
   const [post,setPost]=useState([])
-  console.log(post)
+  
     const navigate=useNavigate()
     
-    const handleNavigate=()=>{
-        navigate("/post/23")
+    const handleNavigate=(id)=>{
+        navigate(`/post/${id}`)
     }
     const getPost=async()=>{
       try {
@@ -47,12 +47,13 @@ const RecentPost = () => {
                 <img
                   src={`http://localhost:7989/images/${post.image}`}
                   alt="recent"
+                  style={{height:"250px",width:"auto"}}
                 />
                 
                 <div className="card-body bg-dark text-white">
                   <h5 className="card-title">{post.title}</h5>
                   <p className="card-text">{post.desc}</p>
-                  <button onClick={handleNavigate} className="btn btn-primary w-100 mt-3">
+                  <button onClick={()=>handleNavigate(post._id)} className="btn btn-primary w-100 mt-3">
                     Read Article
                   </button>
                 </div>

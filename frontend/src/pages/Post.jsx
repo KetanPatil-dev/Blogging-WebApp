@@ -1,31 +1,42 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const Post = () => {
+  const [posts,setPosts]=useState([])
+  
+  const {id}=useParams()
+  useEffect(()=>{
+    const SinglePost=async()=>{
+      const res=await axios.get(`http://localhost:7989/public/singlepost/${id}`)
+      const data= await res.data;
+      setPosts(data.post)
+      
+    }
+    SinglePost()
+  },[])
+  
   return (
     <>
       <div className="container text-white mt-5 mb-5">
         <div className="row">
           <div className="col-md-12">
-            <h1 className="fw-bold text-white mb-4 display-4">My Blog</h1>
+            <h1 className="fw-bold text-white mb-4 display-4">{posts?.title}</h1>
             <img
-              src="https://www.avikalp.com/cdn/shop/products/MWZ2024_wallpaper2_e851d1bf-524d-4c9d-b38d-f6d50b1c94cd.jpg?v=1653183875"
+              src={`http://localhost:7989/images/${posts.image}`}
               alt="img"
               className="img-fluid mb-4"
               style={{
                 borderRadius: "10px",
-                maxHeight: "500px",
+                maxHeight: "auto",
                 objectFit: "cover",
                 width: "100%",
               }}
             />
             <p className="mb-5">
-              Plants are essential to life on Earth, providing oxygen, food, and
-              shelter. They come in countless varieties, from towering trees to
-              tiny mosses. Through photosynthesis, they convert sunlight into
-              energy, supporting ecosystems worldwide. Plants also play a
-              crucial role in medicine, climate regulation, and aesthetics,
-              enhancing both nature and human well-being.
+              {posts.desc}
             </p>
+           
             <hr />
             <h3 className="mt-5 mb-5">Leave a Comment</h3>
             <form>
@@ -47,7 +58,9 @@ const Post = () => {
             </form>
             <hr />
             <h3 className="mt-5 mb-4">Comments</h3>
-            <div className="bg-secondary p-3 rounded mb-3 d-flex">
+            {posts.comments?.map((comment,index)=>{
+              return (
+                <div key={index+1} className="bg-secondary p-3 rounded mb-3 d-flex">
               <img
                 src="https://img.freepik.com/free-vector/young-man-black-shirt_1308-173618.jpg?semt=ais_hybrid"
                 alt="image"
@@ -55,10 +68,12 @@ const Post = () => {
                 style={{ width: "50px", height: "50px", objectFit: "cover" }}
               />
               <div>
-                <h5 className="mb-1">Don</h5>
-                <p className="mb-0">Amazing</p>
+                <h5 className="mb-1">{comment?.userId?.FullName}</h5>
+                <p className="mb-0">{comment.comment}</p>
               </div>
             </div>
+              )
+            })}
           </div>
         </div>
       </div>
