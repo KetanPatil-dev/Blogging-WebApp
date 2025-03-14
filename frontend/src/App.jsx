@@ -11,11 +11,13 @@ import AddPost from "./pages/Admin/AddPost";
 import Users from "./pages/Admin/Users";
 import AllPosts from "./pages/Admin/AllPosts";
 import "./index.css"
+import {Toaster} from "react-hot-toast"
 
 function App() {
   return (
     <>
       <BrowserRouter>
+      <Toaster/>
         <Routes>
           <Route path="/" element={<UserLayout />}>
             <Route path="/" element={<Home />} />

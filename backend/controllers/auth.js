@@ -47,7 +47,7 @@ export const Login=async(req,res)=>{
                 secure:false,
                 maxAge:3*24*60*60*1000
             })
-        return res.status(200).json({success:true,message:"Login SuccessFul..",user:findUser,token })
+        return res.status(200).json({success:true,message:"User Logged in SuccessFully..",user:findUser,token })
     } catch (error) {
         return res.status(300).json({status:false,message:"Server Error"})
     }
