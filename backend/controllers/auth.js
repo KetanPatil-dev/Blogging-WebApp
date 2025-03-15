@@ -1,5 +1,5 @@
-import UserModel from "../models/user.js"
 import bcrypt from "bcryptjs";
+import UserModel from "../models/user.js"
 import jwt from "jsonwebtoken";
 export const Register=async(req ,res)=>{
     try {
@@ -9,15 +9,16 @@ export const Register=async(req ,res)=>{
         const userExists=await  UserModel.findOne({email});
         if(userExists)
         {
-            return res.status(300).json({success:false,message:"User Already Exists"})
+            return res.status(409).json({success:false,message:"User Already Exists"})
         }
-        const imagePath=req.file.filename
-        const hashedPassword= await bcrypt.hash(password,15);
+        
+        const hashedPassword= await bcrypt.hash(password,10);
         const Newuser=new UserModel({
-            FullName,email,password:hashedPassword,profile:imagePath
+            FullName,email,password:hashedPassword
         })
 await Newuser.save()
-return res.status(201).json({status:true,message:"User Created Successfully"})
+
+return res.status(201).json({status:true,message:"User Created Successfully",user:Newuser})
     } catch (error) {
         return res.status(300).json({success:false,message:"Internal Server Error"})
     }
@@ -36,18 +37,19 @@ export const Login=async(req,res)=>{
             return res.status(301).json({status:true,message:"User Doesn't Exists"})
         }
         const correctpassword= await bcrypt.compare(password,findUser.password)
+        const {password:_,userWithPassword}=findUser.toObject()
         if(!correctpassword)
         {
             return res.status(301).json({status:false,message:"Invalid Passowrd"})
         }
-
+       
             const token=jwt.sign({userId:findUser._id},process.env.JWT_SECRET)
             res.cookie("token",token,{
                 httpOnly:true,
                 secure:false,
                 maxAge:3*24*60*60*1000
             })
-        return res.status(200).json({success:true,message:"User Logged in SuccessFully..",user:findUser,token })
+        return res.status(200).json({success:true,message:"User Logged in SuccessFully..",user:userWithPassword,token })
     } catch (error) {
         return res.status(300).json({status:false,message:"Server Error"})
     }
