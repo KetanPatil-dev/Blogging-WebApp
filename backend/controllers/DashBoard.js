@@ -40,20 +40,13 @@ export const DeleteUser = async (req, res) => {
         .status(404)
         .json({ success: false, message: "User not Found" });
     }
-    if (findUser.role === "admin") {
+    if (findUser.role === "user") {
       return res
         .status(400)
-        .json({ success: false, message: "Admin cant delete User Account" });
+        .json({ success: false, message: "User  cant delete User Account" });
     }
     
-    if (findUser.profile) {
-      const profilepath = path.join("public/images", findUser.profile);
-      console.log(profilepath)
-      await fs.promises
-        .unlink(profilepath)
-        console.log("User Image Deleted")
-        
-    }
+   
     const deleteUser = await UserModel.findByIdAndDelete(id);
     return res
       .status(201)

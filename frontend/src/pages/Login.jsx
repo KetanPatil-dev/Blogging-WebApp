@@ -22,7 +22,7 @@ const Login = () => {
       const res = await axios.post("http://localhost:7989/auth/login",data,{withCredentials:true});
       const data2=res.data
       console.log(data2.message,data2.status)
-      {data2.message!==undefined?toast.success(data2.message):toast.error("Invalid Username or Password")}
+      {data2.message!==undefined?toast.success(data2.message,{position:"top-right"}):toast.error("Invalid Username or Password",{position:"top-right"})}
       navigate("/")
     } catch (error) {
       console.log("ERROR", error);

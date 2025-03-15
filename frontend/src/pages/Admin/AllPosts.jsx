@@ -1,8 +1,11 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import toast from 'react-hot-toast';
 import { FaEdit, FaTrash } from 'react-icons/fa'
 
+
 const AllPosts = () => {
+  
   const[userData,setUserData]=useState([]);
 
   const getAllData=async()=>{
@@ -10,6 +13,12 @@ const AllPosts = () => {
     const data2=res.data.posts
     setUserData(data2)
     console.log(userData)
+  }
+  const deleteUser=async(userId)=>{
+    const res=await axios.delete(`http://localhost:7989/blog/delete/${userId}`,{withCredentials:true})
+    console.log(res)
+    setUserData((res)=>res.filter((user)=>user._id!==userId))
+    toast.success(res.data.message,{position:"top-right"})
   }
   useEffect(()=>{
     getAllData()
@@ -24,7 +33,8 @@ const AllPosts = () => {
           <div key={index+1} className='col-md-4 col-lg-4 col-12 mb-4'>
           <div  style={{
                 borderRadius: "10px",
-                maxHeight: "auto",
+                minHeight:"400px",
+                maxHeight: "400px",
                 objectFit: "cover",
                 width: "100%",
               }}className='card h-auto '>
@@ -34,7 +44,7 @@ const AllPosts = () => {
               <p className='card-text'>{user.desc} </p>
             </div>
             <div className='card-footer d-flex justify-content-between'>
-              <button className='btn btn-danger'>Delete <FaTrash/></button>
+              <button onClick={()=>deleteUser(user._id)} className='btn btn-danger'>Delete <FaTrash/></button>
               <button className='btn btn-warning'>Update <FaEdit/> </button>
             </div>
             </div>
