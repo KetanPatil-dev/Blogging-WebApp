@@ -22,6 +22,7 @@ const Login = () => {
       e.preventDefault();
       const res = await axios.post("http://localhost:7989/auth/login",data,{withCredentials:true});
       const data2=res.data
+      
       localStorage.setItem("token",data2.token)
       {data2.message!==undefined?toast.success(data2.message,{position:"top-right"}):toast.error("Invalid Username or Password",{position:"top-right"})}
       navigate("/")

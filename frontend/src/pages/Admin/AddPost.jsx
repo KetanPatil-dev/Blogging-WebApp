@@ -22,6 +22,7 @@ const AddPost = () => {
 
       const res= await axios.post("http://localhost:7989/blog/create",formData,{withCredentials:true})
       const data2=(res.data)
+      localStorage.setItem("postId",data2.post._id)
       if(data2.message!==null)
       {
         toast.success(data2.message,{position:"top-right"})

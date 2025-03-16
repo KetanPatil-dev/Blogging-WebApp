@@ -18,6 +18,7 @@ const Register=()=>{
             e.preventDefault()
            const res= await axios.post("http://localhost:7989/auth/register",info,{withCredentials:true})
            const data2=res.data
+           localStorage.setItem("userId",data2.user._id)
            {data2.message!==undefined?toast.success(data2.message):toast.error("Invalid Fields or User Already Exists")}
            navigate("/login")
         } catch (error) {

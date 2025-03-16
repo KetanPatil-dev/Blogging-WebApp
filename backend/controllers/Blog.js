@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 
 export const Create = async (req, res) => {
-  console.log(req.body)
+  
   try {
     const { title, desc } = req.body;
     const imagePath = req.file.filename;
