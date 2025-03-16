@@ -60,3 +60,24 @@ export const isLogin= async(req,res,next)=>{
             
     }
 }
+export const Verification=async(req,res)=>{
+    try {
+        const token=req.cookkies.token
+        console.log(token)
+        console.log(token)
+        if(!token)
+        {
+            return res.status(404).json({success:false,message:"Token not Found"})
+            
+        }
+        const user=await UserModel.findById(decoded.userId)
+        const decoded= jwt.verify(token,process.env.JWT_SECRET)
+        console.log(decoded)
+        req.user=decoded
+        next()
+
+        
+    } catch (error) {
+        return res.status(500).json({success:false,message:"Internal Server Error"})
+    }
+}

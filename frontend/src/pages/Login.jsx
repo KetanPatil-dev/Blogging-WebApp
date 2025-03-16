@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
+import "../index.css"
 
 const Login = () => {
   const [data, setData] = useState({
@@ -21,7 +22,7 @@ const Login = () => {
       e.preventDefault();
       const res = await axios.post("http://localhost:7989/auth/login",data,{withCredentials:true});
       const data2=res.data
-      console.log(data2.message,data2.status)
+      localStorage.setItem("token",data2.token)
       {data2.message!==undefined?toast.success(data2.message,{position:"top-right"}):toast.error("Invalid Username or Password",{position:"top-right"})}
       navigate("/")
     } catch (error) {

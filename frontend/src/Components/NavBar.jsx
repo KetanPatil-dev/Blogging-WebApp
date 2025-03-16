@@ -1,18 +1,33 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const NavBar = () => {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
+  const navigate = useNavigate();
+
+  // Check if user is logged in from localStorage
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if(token!==null )
+    setIsLogin(true);
+  });
+
+  // Logout function
+  const handleLogout = () => {
+    localStorage.removeItem("token"); // Remove token
+    setIsLogin(false);
+    navigate("/login");
+  };
 
   return (
-    <nav className="navbar d-flex justify-content-between align-items-center p-3">
-      <Link to="/">
+    <nav className="navbar d-flex justify-content-between align-items-center p-3 bg-dark">
+      <Link to="/" className="text-white text-decoration-none">
         <h1 className="mx-5 text-white fs-2 fw-bold">Ketan's Blog</h1>
       </Link>
       <div className="d-flex align-items-center">
         {!isLogin ? (
           <Link to="/login">
-            <button className="btn_sign mx-3">Sign In</button>
+            <button className="btn btn-primary mx-3">Sign In</button>
           </Link>
         ) : (
           <div className="dropdown">
@@ -31,20 +46,15 @@ const NavBar = () => {
             </div>
             <ul className="dropdown-menu dropdown-menu-end dropdown-menu-dark">
               <li>
-                <Link className="dropdown-item" to="/dashboard">DashBoard</Link>
+                <Link className="dropdown-item" to="/dashboard">Dashboard</Link>
               </li>
               <li>
                 <Link className="dropdown-item" to="/profile/989898">Profile</Link>
               </li>
               <li>
-                <Link 
-                  className="dropdown-item" 
-                  to="/login" 
-                  onClick={() => setIsLogin(false)} 
-                  style={{ cursor: "pointer" }}
-                >
+                <button className="dropdown-item" onClick={handleLogout}>
                   Sign Out
-                </Link>
+                </button>
               </li>
             </ul>
           </div>
