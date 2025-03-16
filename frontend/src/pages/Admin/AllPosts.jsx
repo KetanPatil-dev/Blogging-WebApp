@@ -38,7 +38,7 @@ const AllPosts = () => {
                 objectFit: "cover",
                 width: "100%",
               }}className='card h-auto '>
-            <img style={{maxHeight:"350px"}} src={`http://localhost:7989/images/${user.image}`} alt="postimage"/>
+            <img style={{maxHeight:"400px",minHeight:"auto",maxWidth:"400px",minWidth:"auto"}} src={`http://localhost:7989/images/${user.image}`} alt="postimage"/>
             <div className='card-body'>
               <h4 className='card-title'>{user.title}</h4>
               <p className='card-text'>{user.desc} </p>

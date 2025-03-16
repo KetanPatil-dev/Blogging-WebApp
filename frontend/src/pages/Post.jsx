@@ -4,17 +4,33 @@ import { useParams } from "react-router-dom";
 
 const Post = () => {
   const [posts,setPosts]=useState([])
-  
+  const [comment,setComments]=useState()
   const {id}=useParams()
+
+  // const getComments=async()=>{
+  //   try {
+  //     const res= await axios.post("http://localhost:7989/comments/addcomment",{withCrediantials:true})
+  //     console.log(res.comment)
+      
+  //   } catch (error) {
+  //     console.log("ERROR",error)
+  //   }
+  // }
+  
+  
   useEffect(()=>{
     const SinglePost=async()=>{
       const res=await axios.get(`http://localhost:7989/public/singlepost/${id}`)
-      const data= await res.data;
-      setPosts(data.post)
+      const data2= await res.data;
+      
+      setPosts(data2.post)
       
     }
     SinglePost()
+   
   },[])
+
+  
   
   return (
     <>
@@ -39,7 +55,7 @@ const Post = () => {
            
             <hr />
             <h3 className="mt-5 mb-5">Leave a Comment</h3>
-            <form>
+            <form >
               <div className="mb-3">
                 <label htmlFor="comment" className="form-label">
                   Comment
@@ -49,10 +65,12 @@ const Post = () => {
                   id="comment"
                   rows="4"
                    placeholder="Tell us your thoughts"
+                   onChange={(e)=>setComments(e.target.value)}
+                   value={comment}
                   required="true"
                 ></textarea>
               </div>
-              <button type="submit" className="btn btn-primary">
+              <button  type="submit" className="btn btn-primary">
                 Submit
               </button>
             </form>
