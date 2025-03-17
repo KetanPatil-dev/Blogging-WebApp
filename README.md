@@ -11,7 +11,7 @@ Features
 ✅ Image Upload for Blog Posts  
 ✅ Protected Routes (Only logged-in users can access certain pages)  
 ✅ Responsive UI  
-
+![image alt](https://github.com/KetanPatil-dev/Blogging-WebApp/blob/966bebec0e5e77072af2ce7959cd2437a5323eae/Screenshot1.ipg.png)
 Tech Stack
 
  Frontend:
