@@ -1,5 +1,11 @@
 # Blogging-WebApp
 # Blog App
+![image alt](https://github.com/KetanPatil-dev/Blogging-WebApp/blob/966bebec0e5e77072af2ce7959cd2437a5323eae/Screenshot1.ipg.png)
+![image alt](https://github.com/KetanPatil-dev/Blogging-WebApp/blob/3293a7926b5d3a8cfed8b3328ffeeb1d54b71ce7/SS2.jpg)
+![image alt](https://github.com/KetanPatil-dev/Blogging-WebApp/blob/45b93acbd3a58f343122bf956d90a2699901f0e0/SS3.jpg)
+![image alt](https://github.com/KetanPatil-dev/Blogging-WebApp/blob/2354df3e4acedffdea5261f25f642a4969081579/SS4.jpg)
+![image alt](https://github.com/KetanPatil-dev/Blogging-WebApp/blob/2dcc926517481b9069822b0f7c935f121c9bbbd0/SS5.jpg)
+![image alt](https://github.com/KetanPatil-dev/Blogging-WebApp/blob/dea2bc2577308e99bfcb7f4bd89dcf74acb012c6/SS6.jpg)
 
 A full-stack blog application where users can create, read, update, and delete (CRUD) blog posts. Users can also comment on posts and manage their profiles.
 
@@ -11,11 +17,6 @@ Features
 ✅ Image Upload for Blog Posts  
 ✅ Protected Routes (Only logged-in users can access certain pages)  
 ✅ Responsive UI  
-![image alt](https://github.com/KetanPatil-dev/Blogging-WebApp/blob/966bebec0e5e77072af2ce7959cd2437a5323eae/Screenshot1.ipg.png)
-![image alt](https://github.com/KetanPatil-dev/Blogging-WebApp/blob/3293a7926b5d3a8cfed8b3328ffeeb1d54b71ce7/SS2.jpg)
-![image alt](https://github.com/KetanPatil-dev/Blogging-WebApp/blob/45b93acbd3a58f343122bf956d90a2699901f0e0/SS3.jpg)
-![image alt](https://github.com/KetanPatil-dev/Blogging-WebApp/blob/2354df3e4acedffdea5261f25f642a4969081579/SS4.jpg)
-![image alt](https://github.com/KetanPatil-dev/Blogging-WebApp/blob/2dcc926517481b9069822b0f7c935f121c9bbbd0/SS5.jpg)
 
 Tech Stack
 
