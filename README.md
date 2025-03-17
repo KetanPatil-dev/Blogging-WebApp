@@ -89,11 +89,6 @@ npm run dev
 - `POST /comments/addcomment` - Add a comment
 
 
-## Deployment
-For deployment, use:
-- Frontend: Vercel / Netlify
-- Backend: Render / Railway
-- Database: MongoDB Atlas
 
 ## Contribution
 Feel free to fork this repo and submit a pull request with your improvements!
