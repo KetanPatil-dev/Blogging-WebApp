@@ -90,9 +90,4 @@ npm run dev
 
 
 
-## Contribution
-Feel free to fork this repo and submit a pull request with your improvements!
-
-## License
-This project is open-source and available under the [MIT License](LICENSE).
 
