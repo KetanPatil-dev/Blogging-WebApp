@@ -77,6 +77,7 @@ npm run dev
 ### Authentication:
 - `POST /auth/register` - Register a new user
 - `POST /auth/login` - Login user
+- `POST /auth/logout` - Logout user
 
 ### Blog Posts:
 - `POST /blog/create` - Create a new blog post
@@ -86,6 +87,10 @@ npm run dev
 
 ### Comments:
 - `POST /comments/addcomment` - Add a comment
+
+### Dashboard:
+- `GET /dashboard/getalldata`- Gets all Data (Users and Posts)
+  
 
 
 
