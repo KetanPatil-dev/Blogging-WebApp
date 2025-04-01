@@ -7,7 +7,7 @@
 ![image alt](https://github.com/KetanPatil-dev/Blogging-WebApp/blob/dea2bc2577308e99bfcb7f4bd89dcf74acb012c6/SS6.jpg)
 
 A full-stack blog application where users can create, read, update, and delete (CRUD) blog posts. Users can also comment on posts and manage their profiles.
-
+NOTE- This is my First Full-Stack Project so the UI might not be that great, but I have tried my very best.
 Features
 
 ✅ User Authentication (Login/Signup)  
